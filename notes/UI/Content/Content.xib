@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ContentViewController">
+            <connections>
+                <outlet property="textContainer" destination="SeQ-RK-f1T" id="ciu-ge-DLb"/>
+                <outlet property="view" destination="WVO-Z9-pLM" id="Z6k-1Q-d51"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <scrollView appearanceType="aqua" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" id="WVO-Z9-pLM">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="135"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <clipView key="contentView" drawsBackground="NO" id="p7c-mb-OrK">
+                <rect key="frame" x="0.0" y="0.0" width="223" height="118"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <textView wantsLayer="YES" horizontallyResizable="YES" verticallyResizable="YES" fieldEditor="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="bar" allowsDocumentBackgroundColorChange="YES" allowsUndo="YES" allowsImageEditing="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="SeQ-RK-f1T">
+                        <rect key="frame" x="0.0" y="0.0" width="223" height="86"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <size key="minSize" width="191" height="86"/>
+                        <size key="maxSize" width="240" height="10000000"/>
+                        <attributedString key="textStorage">
+                            <fragment content="Hi">
+                                <attributes>
+                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <font key="NSFont" size="12" name="Helvetica"/>
+                                    <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </textView>
+                </subviews>
+                <edgeInsets key="contentInsets" left="16" right="16" top="16" bottom="16"/>
+            </clipView>
+            <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="s2i-bp-152">
+                <rect key="frame" x="0.0" y="118" width="223" height="17"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="x3q-aU-Oyf">
+                <rect key="frame" x="223" y="0.0" width="17" height="118"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <point key="canvasLocation" x="-188" y="132"/>
+        </scrollView>
+    </objects>
+</document>
