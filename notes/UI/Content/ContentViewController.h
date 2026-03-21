@@ -8,6 +8,7 @@
 
 @interface ContentViewController : NSViewController
 
-@property IBOutlet NSTextView * textContainer;
+@property IBOutlet NSView * parentView;
+@property IBOutlet NSScrollView * scrollView;
 
 @end

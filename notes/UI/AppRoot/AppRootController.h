@@ -7,7 +7,6 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
-@interface MainWindowController : NSWindowController
-
+@interface AppRootController : NSWindowController
 
 @end

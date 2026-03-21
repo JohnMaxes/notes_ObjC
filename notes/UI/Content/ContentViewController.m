@@ -16,6 +16,13 @@
 }
 
 - (void)viewDidLoad {
+    
+}
+
+-(void)awakeFromNib {
+    _scrollView.wantsLayer = YES;
+    _scrollView.layer.cornerRadius = 8;
+    _scrollView.layer.borderWidth = 1;
 }
 
 @end

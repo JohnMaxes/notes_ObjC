@@ -7,13 +7,13 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
-#import "MainWindowController.h"
+#import "AppRootController.h"
 #import "MainSplitViewController.h"
 
-@implementation MainWindowController
+@implementation AppRootController
 
 - (instancetype)init {
-    self = [super initWithWindowNibName:@"MainWindow"];
+    self = [super initWithWindowNibName:@"AppRoot"];
     return self;
 }
 
