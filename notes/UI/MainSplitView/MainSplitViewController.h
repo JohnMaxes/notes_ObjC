@@ -6,7 +6,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "NavigatorController.h"
+#import "ContentViewController.h"
 
-@interface MainSplitViewController : NSSplitViewController
+@interface MainSplitViewController : NSSplitViewController <NavigatorDelegate>
+
+@property (strong) NavigatorController * navVC;
+@property (strong) ContentViewController * contentVC;
 
 @end

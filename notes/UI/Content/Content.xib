@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="parentView" destination="8dv-28-RNl" id="bNJ-yd-Tdh"/>
                 <outlet property="scrollView" destination="Ox4-jE-UXw" id="yAS-Qp-1a5"/>
+                <outlet property="textView" destination="Tjl-GQ-ARr" id="q5d-u2-UWj"/>
                 <outlet property="view" destination="8dv-28-RNl" id="DGZ-Hd-zut"/>
             </connections>
         </customObject>
@@ -45,11 +46,11 @@
                         </subviews>
                         <edgeInsets key="contentInsets" left="10" right="10" top="10" bottom="10"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="oUk-zy-6W8">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="oUk-zy-6W8">
                         <rect key="frame" x="-100" y="-100" width="223" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="v3a-08-r1b">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="v3a-08-r1b">
                         <rect key="frame" x="201" y="0.0" width="17" height="218"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>

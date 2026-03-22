@@ -12,4 +12,6 @@
 @property (strong) NSMutableArray<NoteNode *> *children;
 @property (strong) NSString *content;
 
++ (NSMutableArray<NoteNode *>*)getMock;
+
 @end

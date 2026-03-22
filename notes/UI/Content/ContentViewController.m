@@ -7,6 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ContentViewController.h"
+#import "NoteNode.h"
 
 @implementation ContentViewController
 
@@ -16,13 +17,29 @@
 }
 
 - (void)viewDidLoad {
-    
+    _textView.delegate = self;
 }
 
 -(void)awakeFromNib {
     _scrollView.wantsLayer = YES;
     _scrollView.layer.cornerRadius = 8;
     _scrollView.layer.borderWidth = 1;
+}
+
+-(void)displayContentWithNote:(NoteNode*) note {
+    NSLog(@"Displaying note: %p title: %@ content: %@",
+          note, note.title, note.content);
+    self.isUpdatingUI = YES;
+    _currNote = note;
+    _textView.string = note.content ?: @"";
+    self.isUpdatingUI = NO;
+}
+
+-(void)textDidChange:(NSNotification *)notification{
+    NSLog(@"Editing note: %p with new content: %@",
+          _currNote, _textView.string);
+    if (self.isUpdatingUI) return; // Only run for user edits!
+    _currNote.content = _textView.string;
 }
 
 @end

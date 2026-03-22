@@ -7,9 +7,16 @@
 #import <Cocoa/Cocoa.h>
 #import "NoteNode.h"
 
+@protocol NavigatorDelegate <NSObject>
+-(void)noteSelected:(NoteNode *)note;
+@end
+
 @interface NavigatorController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property IBOutlet NSOutlineView * outlineView;
 @property (strong) NSMutableArray<NoteNode *> *rootNodes;
+@property (weak) id<NavigatorDelegate> delegate;
 
 @end
+
+

@@ -11,20 +11,29 @@
 
 @implementation MainSplitViewController
 
+-(instancetype)init {
+    self = [super init];
+    _navVC = [[NavigatorController alloc] init];
+    _navVC.delegate = self;
+    _contentVC = [[ContentViewController alloc] init];
+    
+    return self;
+}
+
 -(void)viewDidLoad {
     [super viewDidLoad];
 
-    NavigatorController *navVC = [[NavigatorController alloc] init];
-    ContentViewController *contentVC = [[ContentViewController alloc] init];
-
     NSSplitViewItem *sidebarItem =
-        [NSSplitViewItem sidebarWithViewController:navVC];
-
+        [NSSplitViewItem sidebarWithViewController:_navVC];
     NSSplitViewItem *contentItem =
-        [NSSplitViewItem splitViewItemWithViewController:contentVC];
+        [NSSplitViewItem splitViewItemWithViewController:_contentVC];
 
     [self addSplitViewItem:sidebarItem];
     [self addSplitViewItem:contentItem];
+}
+
+-(void)noteSelected:(NoteNode*)note {
+    [_contentVC displayContentWithNote:note];
 }
 
 @end
