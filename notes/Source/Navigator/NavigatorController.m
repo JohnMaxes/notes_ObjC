@@ -70,8 +70,8 @@
     if (row == -1) return;
     NoteNode *selectedNode = [_outlineView itemAtRow:row];
     NSLog(@"Selected note: %p title: %@ content: %@", selectedNode, selectedNode.title, selectedNode.content);
-    
-    [_delegate noteSelected:selectedNode];
+    if(selectedNode.content != nil)
+        [_delegate noteSelected:selectedNode];
 }
 
 @end

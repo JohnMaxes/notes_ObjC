@@ -13,7 +13,7 @@
 @property IBOutlet NSScrollView * scrollView;
 @property IBOutlet NSTextView * textView;
 
-@property (strong) NoteNode* currNote;
+@property (strong) NoteNode * currNote;
 @property (nonatomic, assign) BOOL isUpdatingUI;
 -(void)displayContentWithNote:(NoteNode*) note;
 

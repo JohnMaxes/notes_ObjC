@@ -16,11 +16,30 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="390" y="275" width="480" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="770"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1050"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="88BE8DC1-2B1B-4A92-80D1-439F04F6A914" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="Ml4-ON-THN">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="BDCFEC0A-3390-4558-8918-10A44AD81152" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" bordered="YES" id="5si-7P-Ydz">
+                        <size key="minSize" width="24" height="24"/>
+                        <size key="maxSize" width="24" height="24"/>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="n64-fO-Ecp"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="Ev2-Ay-Kul"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="hO5-If-f5t"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="uwU-w7-Tcu"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="7XN-ZO-rxb"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="n64-fO-Ecp"/>
+                    <toolbarItem reference="Ev2-Ay-Kul"/>
+                    <toolbarItem reference="7XN-ZO-rxb"/>
+                    <toolbarItem reference="hO5-If-f5t"/>
+                </defaultToolbarItems>
+            </toolbar>
             <point key="canvasLocation" x="-251" y="7"/>
         </window>
     </objects>

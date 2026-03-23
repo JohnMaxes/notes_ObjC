@@ -17,10 +17,12 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     _textView.delegate = self;
 }
 
 -(void)awakeFromNib {
+    [super awakeFromNib];
     _scrollView.wantsLayer = YES;
     _scrollView.layer.cornerRadius = 8;
     _scrollView.layer.borderWidth = 1;

@@ -8,10 +8,11 @@
 
 @interface NoteNode : NSObject
 
-@property (strong) NSString *title;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *content;
 @property (strong) NSMutableArray<NoteNode *> *children;
-@property (strong) NSString *content;
 
+@property (nonatomic, copy, readonly) NSString *identifier;
 + (NSMutableArray<NoteNode *>*)getMock;
 
 @end

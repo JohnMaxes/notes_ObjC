@@ -8,6 +8,10 @@
 
 @implementation NoteNode
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<NoteNode id=%@ title=%@ ptr=%p>", self.identifier, self.title, self];
+}
+
 + (NSArray<NoteNode *>*)getMock {
     // Create sample data
     NoteNode *work = [NoteNode new];
