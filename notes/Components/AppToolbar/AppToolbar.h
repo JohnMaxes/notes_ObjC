@@ -8,7 +8,6 @@
 
 @interface AppToolbar : NSView
 
-@property IBOutlet NSView * container;
 @property IBOutlet NSStackView * stack;
 
 @property (strong) IBOutlet NSView *contentView;

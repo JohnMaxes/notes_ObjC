@@ -26,16 +26,23 @@
 }
 
 - (void)commonInit {
-    [[NSBundle mainBundle] loadNibNamed:@"AppToolbar"
-                                  owner:self
-                        topLevelObjects:nil];
+    NSNib *nib = [[NSNib alloc] initWithNibNamed:@"AppToolbar" bundle:nil];
+    NSArray *topLevelObjects;
 
-    self.contentView.frame = self.bounds;
-    self.contentView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+    [nib instantiateWithOwner:self topLevelObjects:&topLevelObjects];
 
-    [self addMock];
-    [self addSubview:self.contentView];
-    
+    for (id obj in topLevelObjects) {
+        if ([obj isKindOfClass:[NSView class]]) {
+            self.contentView = obj;
+            break;
+        }
+    }
+
+//    self.contentView.frame = self.bounds;
+//    self.contentView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+
+    [self addSubview:_stack];
+//    [self addMock];
 }
 
 -(void)addMock {
