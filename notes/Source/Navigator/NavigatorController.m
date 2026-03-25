@@ -74,4 +74,12 @@
         [_delegate noteSelected:selectedNode];
 }
 
+- (void)toolbar:(AppToolbar *)toolbar didClickButtonAtIndex:(NSInteger)index
+{
+    switch(index) {
+        case 0: NSLog(@"Bold clicked"); break;
+        case 1: NSLog(@"Italic clicked"); break;
+    }
+}
+
 @end

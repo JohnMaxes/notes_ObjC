@@ -40,7 +40,7 @@
 -(void)textDidChange:(NSNotification *)notification{
     NSLog(@"Editing note: %p with new content: %@",
           _currNote, _textView.string);
-    if (self.isUpdatingUI) return; // Only run for user edits!
+    if (self.isUpdatingUI) return;
     _currNote.content = _textView.string;
 }
 

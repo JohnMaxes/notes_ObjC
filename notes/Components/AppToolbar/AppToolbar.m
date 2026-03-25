@@ -37,12 +37,32 @@
             break;
         }
     }
+    
+    [self addSubview:self.contentView];
+    [self addMock];
+}
 
-//    self.contentView.frame = self.bounds;
-//    self.contentView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+-(void)addButton:(NSButton*) button {
+    [self.stack addArrangedSubview:button];
+    [self setupButtonAction:button atIndex:[self.stack.arrangedSubviews count] - 1];
+}
 
-    [self addSubview:_stack];
-//    [self addMock];
+-(void)addButtons:(NSArray<NSButton *>*) buttons {
+    for(NSButton *button in buttons) {
+        [self.stack addArrangedSubview:button];
+        [self setupButtonAction:button atIndex:[self.stack.arrangedSubviews count] - 1];
+    }
+}
+
+- (void)setupButtonAction:(NSButton *)button atIndex:(NSInteger)index {
+    button.tag = index;
+    [button setTarget:self];
+    [button setAction:@selector(buttonClicked:)];
+}
+
+- (void)buttonClicked:(NSButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(toolbar:didClickButtonAtIndex:)])
+        [self.delegate toolbar:self didClickButtonAtIndex:sender.tag];
 }
 
 -(void)addMock {
@@ -54,9 +74,7 @@
     [italic setTitle:@"2"];
     [italic2 setTitle:@"3"];
 
-    [self.stack addArrangedSubview:bold];
-    [self.stack addArrangedSubview:italic];
-    [self.stack addArrangedSubview:italic2];
+    [self addButtons:@[bold, italic, italic2]];
 }
 
 @end

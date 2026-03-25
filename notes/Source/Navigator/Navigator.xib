@@ -15,12 +15,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="12N-FP-WFN">
-            <rect key="frame" x="0.0" y="0.0" width="180" height="248"/>
+            <rect key="frame" x="0.0" y="0.0" width="180" height="222"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejn-yl-Reh">
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejn-yl-Reh">
                     <rect key="frame" x="0.0" y="0.0" width="180" height="192"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="ikj-xf-joU">
                         <rect key="frame" x="0.0" y="0.0" width="180" height="192"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,16 +82,23 @@
                     </scroller>
                 </scrollView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="eoa-Fm-ZCM" customClass="AppToolbar">
-                    <rect key="frame" x="0.0" y="198" width="180" height="50"/>
+                    <rect key="frame" x="0.0" y="192" width="180" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="gMj-wD-rmJ"/>
+                        <constraint firstAttribute="height" constant="30" id="gMj-wD-rmJ"/>
                     </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="T40-jL-eqk"/>
+                    </connections>
                 </customView>
             </subviews>
             <constraints>
+                <constraint firstItem="ejn-yl-Reh" firstAttribute="leading" secondItem="12N-FP-WFN" secondAttribute="leading" id="Jfx-Pe-pmj"/>
                 <constraint firstAttribute="trailing" secondItem="eoa-Fm-ZCM" secondAttribute="trailing" id="TSp-of-NAl"/>
+                <constraint firstItem="ejn-yl-Reh" firstAttribute="top" secondItem="eoa-Fm-ZCM" secondAttribute="bottom" id="UlO-09-xco"/>
+                <constraint firstAttribute="trailing" secondItem="ejn-yl-Reh" secondAttribute="trailing" id="fmo-VD-TcS"/>
                 <constraint firstItem="eoa-Fm-ZCM" firstAttribute="leading" secondItem="12N-FP-WFN" secondAttribute="leading" id="kDE-qA-5Hm"/>
                 <constraint firstItem="eoa-Fm-ZCM" firstAttribute="top" secondItem="12N-FP-WFN" secondAttribute="top" id="kgk-fW-6Hk"/>
+                <constraint firstAttribute="bottom" secondItem="ejn-yl-Reh" secondAttribute="bottom" id="sZA-sJ-f9a"/>
             </constraints>
             <point key="canvasLocation" x="-232" y="66"/>
         </customView>
