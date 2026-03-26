@@ -10,10 +10,10 @@
 #import "AppRootController.h"
 #import "MainSplitViewController.h"
 
-@implementation AppRootController
+@implementation AppWindowController
 
 - (instancetype)init {
-    self = [super initWithWindowNibName:@"AppRoot"];
+    self = [super initWithWindowNibName:@"AppWindow"];
     return self;
 }
 
