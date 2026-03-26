@@ -13,6 +13,9 @@
 @property (strong) NSMutableArray<NoteNode *> *children;
 
 @property (nonatomic, copy, readonly) NSString *identifier;
+
++ (instancetype)createFromTitle: (NSString*)title
+                     andContent: (NSString*)content;
 + (NSMutableArray<NoteNode *>*)getMock;
 
 @end

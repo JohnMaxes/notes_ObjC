@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NavigatorController">
+        <customObject id="-2" userLabel="File's Owner" customClass="SidebarController">
             <connections>
                 <outlet property="outlineView" destination="cTi-BT-fYf" id="aSI-Jr-r4b"/>
                 <outlet property="view" destination="12N-FP-WFN" id="aq1-el-R4W"/>
@@ -23,21 +23,16 @@
                     <rect key="frame" x="6" y="178" width="168" height="30"/>
                     <beginningViews>
                         <button verticalHuggingPriority="750" id="Vr2-8f-Q3s">
-                            <rect key="frame" x="-1" y="3" width="27" height="23"/>
+                            <rect key="frame" x="-1" y="3" width="29" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AIP-CT-wCo">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="system" size="15"/>
                             </buttonCell>
                             <color key="bezelColor" name="AccentColor"/>
-                        </button>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfy-ee-gR8">
-                            <rect key="frame" x="28" y="3" width="27" height="23"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AG1-RZ-5rI">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <color key="bezelColor" name="AccentColor"/>
+                            <connections>
+                                <action selector="addButtonPressed:" target="-2" id="paY-y0-lcp"/>
+                            </connections>
                         </button>
                     </beginningViews>
                     <constraints>
@@ -46,10 +41,8 @@
                     </constraints>
                     <visibilityPriorities>
                         <integer value="1000"/>
-                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
-                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>

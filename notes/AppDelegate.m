@@ -6,17 +6,17 @@
 //
 
 #import "AppDelegate.h"
-#import "AppRootController.h"
+#import "AppWindowController.h"
 
 @interface AppDelegate ()
 
-@property (strong) AppRootController *mainWC;
+@property (strong) AppWindowController *mainWC;
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    _mainWC = [[AppRootController alloc] init];
+    _mainWC = [[AppWindowController alloc] init];
     [self.mainWC showWindow:self];
 }
 

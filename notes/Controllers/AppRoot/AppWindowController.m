@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
-#import "AppRootController.h"
+#import "AppWindowController.h"
 #import "MainSplitViewController.h"
 
 @implementation AppWindowController

@@ -8,11 +8,15 @@
 #import "NoteNode.h"
 
 @protocol AddNoteDelegate <NSObject>
--(void)onAddNotePress:(NoteNode *)note;
+    -(void)onCreateNote:(NoteNode *)note;
 @end
 
-@interface AddNoteModal : NSWindowController
 
+@interface AddNoteModal : NSViewController
+    @property (weak) id<AddNoteDelegate> delegate;
+    @property IBOutlet NSTextField * titleTextField;
+    @property IBOutlet NSTextField * initialContentTextField;
 
-
+    -(IBAction)createButtonPressed:(id)sender;
+    -(IBAction)cancelButtonPressed:(id)sender;
 @end

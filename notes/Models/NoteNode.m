@@ -12,6 +12,14 @@
     return [NSString stringWithFormat:@"<NoteNode id=%@ title=%@ ptr=%p>", self.identifier, self.title, self];
 }
 
++ (instancetype)createFromTitle:(NSString *)title andContent:(NSString *)content {
+    NoteNode* new = [NoteNode new];
+    new.title = title;
+    new.content = content;
+    
+    return new;
+}
+
 + (NSArray<NoteNode *>*)getMock {
     // Create sample data
     NoteNode *work = [NoteNode new];

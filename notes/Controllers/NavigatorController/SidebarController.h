@@ -6,18 +6,19 @@
 //
 #import <Cocoa/Cocoa.h>
 #import "NoteNode.h"
+#import "AddNoteModal.h"
 
-@protocol NavigatorDelegate <NSObject>
+@protocol SidebarDelegate <NSObject>
 -(void)noteSelected:(NoteNode *)note;
 @end
 
 @interface SidebarController : NSViewController
-    <NSOutlineViewDataSource, NSOutlineViewDelegate>
+    <NSOutlineViewDataSource, NSOutlineViewDelegate, AddNoteDelegate>
 
 @property IBOutlet NSOutlineView * outlineView;
 @property (strong) NSMutableArray<NoteNode *> *rootNodes;
-@property (weak) id<NavigatorDelegate> delegate;
+@property (weak) id<SidebarDelegate> delegate;
+
+-(IBAction)addButtonPressed:(id)sender;
 
 @end
-
-
