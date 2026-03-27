@@ -24,4 +24,6 @@
     self.window.contentViewController = splitVC;
 }
 
+- (IBAction)preferenceMenuItemSelected:(id)sender {
+}
 @end

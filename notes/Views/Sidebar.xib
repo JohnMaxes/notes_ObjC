@@ -16,22 +16,32 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="12N-FP-WFN">
-            <rect key="frame" x="0.0" y="0.0" width="180" height="208"/>
+            <rect key="frame" x="0.0" y="0.0" width="180" height="218"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <subviews>
                 <stackView orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VhT-vj-yw9">
                     <rect key="frame" x="6" y="178" width="168" height="30"/>
                     <beginningViews>
                         <button verticalHuggingPriority="750" id="Vr2-8f-Q3s">
-                            <rect key="frame" x="-1" y="3" width="29" height="23"/>
+                            <rect key="frame" x="-1" y="3" width="27" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AIP-CT-wCo">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system" size="15"/>
+                                <font key="font" metaFont="system"/>
                             </buttonCell>
                             <color key="bezelColor" name="AccentColor"/>
                             <connections>
                                 <action selector="addButtonPressed:" target="-2" id="paY-y0-lcp"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5xX-i9-I8M">
+                            <rect key="frame" x="28" y="3" width="31" height="23"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="folder.fill" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Em5-bF-Iq4">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="folderButtonPressed:" target="-2" id="Ez6-mb-0gA"/>
                             </connections>
                         </button>
                     </beginningViews>
@@ -41,8 +51,10 @@
                     </constraints>
                     <visibilityPriorities>
                         <integer value="1000"/>
+                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
@@ -113,9 +125,9 @@
             <constraints>
                 <constraint firstItem="VhT-vj-yw9" firstAttribute="leading" secondItem="12N-FP-WFN" secondAttribute="leading" constant="6" id="IJO-od-5zP"/>
                 <constraint firstItem="ejn-yl-Reh" firstAttribute="leading" secondItem="12N-FP-WFN" secondAttribute="leading" id="Jfx-Pe-pmj"/>
+                <constraint firstItem="VhT-vj-yw9" firstAttribute="top" secondItem="12N-FP-WFN" secondAttribute="top" constant="10" id="W0P-Ks-dvw"/>
                 <constraint firstItem="ejn-yl-Reh" firstAttribute="top" secondItem="VhT-vj-yw9" secondAttribute="bottom" id="caa-CX-LEY"/>
                 <constraint firstAttribute="trailing" secondItem="ejn-yl-Reh" secondAttribute="trailing" id="fmo-VD-TcS"/>
-                <constraint firstItem="VhT-vj-yw9" firstAttribute="top" secondItem="12N-FP-WFN" secondAttribute="top" id="sU5-HQ-tOZ"/>
                 <constraint firstAttribute="bottom" secondItem="ejn-yl-Reh" secondAttribute="bottom" id="sZA-sJ-f9a"/>
                 <constraint firstAttribute="trailing" secondItem="VhT-vj-yw9" secondAttribute="trailing" constant="6" id="wlI-H5-mrC"/>
             </constraints>
@@ -124,6 +136,7 @@
     </objects>
     <resources>
         <image name="NSAddTemplate" width="18" height="16"/>
+        <image name="folder.fill" catalog="system" width="19" height="14"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

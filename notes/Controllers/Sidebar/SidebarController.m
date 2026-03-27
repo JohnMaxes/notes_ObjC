@@ -13,7 +13,7 @@
 
 - (instancetype)init
 {
-    self = [super initWithNibName:@"Navigator" bundle:NULL];
+    self = [super initWithNibName:@"Sidebar" bundle:NULL];
     return self;
 }
 
@@ -24,12 +24,6 @@
     self.outlineView.dataSource = self;
     self.outlineView.delegate = self;
     [self.outlineView reloadData];
-    
-    [self.rootNodes.]
-    [self.rootNodes addObserver:self
-                forKeyPath:@"title"
-                   options:NSKeyValueObservingOptionNew
-                   context:nil];
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView
@@ -87,9 +81,23 @@
     [self presentViewControllerAsSheet:addNoteModal];
 }
 
+- (void)folderButtonPressed:(id)sender {
+    NSOpenPanel * panel = [NSOpenPanel openPanel];
+    panel.canChooseFiles = YES;
+    panel.canChooseDirectories = NO;
+    panel.allowsMultipleSelection = NO;
+
+    if ([panel runModal] == NSModalResponseOK) {
+        NSURL *selectedFile = panel.URL;
+        NSLog(@"Selected file: %@", selectedFile.path);
+    }
+}
+
 - (void)onCreateNote:(NoteNode *)note {
+    NSMutableArray<NoteNode *>* KVO_rootNodes = [self mutableArrayValueForKey:@"rootNodes"];
+    
     NSInteger selectedRow = _outlineView.selectedRow;
-    if(selectedRow == -1) [self.rootNodes addObject:note];
+    if(selectedRow == -1) [KVO_rootNodes addObject:note];
     else {
         NoteNode *selectedNode = [_outlineView itemAtRow:selectedRow];
         [selectedNode.children addObject:note];

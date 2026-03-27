@@ -15,10 +15,11 @@
         <window title="Notes" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="390" y="275" width="480" height="270"/>
+            <rect key="contentRect" x="601" y="300" width="722" height="474"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1050"/>
+            <value key="minSize" type="size" width="722" height="474"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="722" height="474"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
             <toolbar key="toolbar" implicitIdentifier="88BE8DC1-2B1B-4A92-80D1-439F04F6A914" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="Ml4-ON-THN">
@@ -40,7 +41,7 @@
                     <toolbarItem reference="hO5-If-f5t"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="-251" y="7"/>
+            <point key="canvasLocation" x="-130" y="109"/>
         </window>
     </objects>
 </document>

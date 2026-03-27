@@ -7,10 +7,13 @@
 
 #import "AppDelegate.h"
 #import "AppWindowController.h"
+#import "PreferenceWindowController.h"
 
 @interface AppDelegate ()
 
 @property (strong) AppWindowController *mainWC;
+@property (strong) PreferenceWindowController *prefWC;
+
 @end
 
 @implementation AppDelegate
@@ -30,5 +33,11 @@
     return YES;
 }
 
+
+- (IBAction)preferenceMenuItemSelected:(id)sender {
+    NSLog(@"%@", @"Okay");
+    _prefWC = [[PreferenceWindowController alloc] init];
+    [_prefWC showWindow:self];
+}
 
 @end

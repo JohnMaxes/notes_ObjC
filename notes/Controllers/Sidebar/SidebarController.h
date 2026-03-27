@@ -20,5 +20,6 @@
 @property (weak) id<SidebarDelegate> delegate;
 
 -(IBAction)addButtonPressed:(id)sender;
+-(IBAction)folderButtonPressed:(id)sender;
 
 @end
