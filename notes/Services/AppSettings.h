@@ -14,9 +14,9 @@ typedef NS_ENUM(NSInteger, AppTheme) {
 
 @interface AppSettings : NSObject
 
-+(instancetype)shared;
+@property (nonatomic, assign) AppTheme theme;
 
-@property (nonatomic) AppTheme theme;
++(instancetype)getShared;
 -(void)setAppTheme:(AppTheme)theme;
 
 @end

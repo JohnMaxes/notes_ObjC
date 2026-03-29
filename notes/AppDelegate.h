@@ -9,6 +9,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property (readonly, strong) NSPersistentContainer *persistentContainer;
+
 - (IBAction)preferenceMenuItemSelected:(id)sender;
 
 @end

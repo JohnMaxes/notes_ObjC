@@ -10,16 +10,14 @@
 
 - (instancetype)init {
     self = [super initWithWindowNibName:@"PreferenceWindow"];
-    _settings = [AppSettings shared];
+    _settings = [AppSettings getShared];
     NSLog(@"pref Win init");
     return self;
 }
 
 -(void)awakeFromNib {
     [super awakeFromNib];
-    [self.themePopup removeAllItems];
-    [self.themePopup addItemsWithTitles:@[@"Inherit from System", @"Light Theme", @"Dark Theme"]];
-    [self.themePopup selectItemAtIndex:0];
+    [self initThemeSettings];
 }
 
 -(void)windowDidLoad {
@@ -27,13 +25,32 @@
     NSLog(@"pref Win did load");
 }
 
-- (IBAction)themeChanged:(NSPopUpButton *)sender {
-    NSInteger index = sender.indexOfSelectedItem;
-    AppTheme theme = (AppTheme)index;
-    [AppSettings shared].theme = theme;
+- (void)initThemeSettings {
+    [self.themePopup removeAllItems];
+
+    NSMenuItem *system = [[NSMenuItem alloc] initWithTitle:@"Inherit from System" action:nil keyEquivalent:@""];
+    system.tag = AppThemeSystem;
+
+    NSMenuItem *light = [[NSMenuItem alloc] initWithTitle:@"Light Theme" action:nil keyEquivalent:@""];
+    light.tag = AppThemeLight;
+
+    NSMenuItem *dark = [[NSMenuItem alloc] initWithTitle:@"Dark Theme" action:nil keyEquivalent:@""];
+    dark.tag = AppThemeDark;
+
+    [_themePopup.menu addItem:system];
+    [_themePopup.menu addItem:light];
+    [_themePopup.menu addItem:dark];
     
-    NSAppearance *darkAppearance = [NSAppearance appearanceNamed:NSAppearanceNameDarkAqua];
-    [NSApp setAppearance:darkAppearance];
+    NSInteger selectedIndex =
+        _settings.theme == AppThemeSystem ? 0
+            : _settings.theme == AppThemeLight ? 1 : 2;
+    
+    [self.themePopup selectItemAtIndex:selectedIndex];
+}
+
+- (IBAction)themeChanged:(NSPopUpButton *)sender {
+    AppTheme theme = (AppTheme)sender.selectedItem.tag;
+    [_settings setAppTheme:theme];
 }
 
 @end
