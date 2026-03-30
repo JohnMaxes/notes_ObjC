@@ -4,7 +4,7 @@
 //
 //  Created by macmini 2 on 23/3/26.
 //
-#import "AddNoteModal.h"
+#import "AddNoteModalController.h"
 #import "Cocoa/Cocoa.h"
 
 @implementation AddNoteModal
@@ -14,10 +14,8 @@
     NSString * initContent = _initialContentTextField.stringValue;
     
     if (![title isEqualToString:@""] && ![initContent isEqualToString:@""]) {
-        NoteNode * newNote = [NoteNode createFromTitle:title
-                                            andContent:initContent];
+        [self.delegate onCreateNoteWithTitle:title];
         [self dismissViewController:self];
-        [self.delegate onCreateNote:newNote];
     }
 }
 

@@ -6,6 +6,7 @@
 //
 #import "Cocoa/Cocoa.h"
 #import "NoteNode.h"
+#import "Note+CoreDataClass.h"
 
 @interface ContentViewController : NSViewController <NSTextViewDelegate>
 
@@ -13,7 +14,7 @@
 @property IBOutlet NSScrollView * scrollView;
 @property IBOutlet NSTextView * textView;
 
-@property (strong) NoteNode * currNote;
+@property (strong) Note * currNote;
 @property (nonatomic, assign) BOOL isUpdatingUI;
 -(void)displayContentWithNote:(NoteNode*) note;
 

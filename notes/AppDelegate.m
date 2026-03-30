@@ -21,20 +21,21 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [AppSettings getShared];
-    
+
     _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"Model"];
-    
+
     [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *desc, NSError *error) {
         if (error != nil) {
             NSLog(@"Unresolved error %@, %@", error, error.userInfo);
             abort();
         }
+
+        NSLog(@"Core Data store path: %@", desc.URL.path);
     }];
-    
+
     _mainWC = [[AppWindowController alloc] init];
     [self.mainWC showWindow:self];
 }
-
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application

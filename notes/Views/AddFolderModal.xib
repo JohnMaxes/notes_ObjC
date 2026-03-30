@@ -8,7 +8,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AddNoteModal">
             <connections>
-                <outlet property="initialContentTextField" destination="j2d-Hb-VmS" id="k3O-GH-1Xr"/>
                 <outlet property="titleTextField" destination="fKt-5q-5tZ" id="c9M-CI-5l9"/>
                 <outlet property="view" destination="1Vy-r2-aUP" id="AAX-U2-sJH"/>
             </connections>
@@ -25,25 +24,9 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WSt-2N-57m">
-                    <rect key="frame" x="18" y="72" width="90" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Initial content:" id="9yj-Hz-qpk">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField focusRingType="none" horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fKt-5q-5tZ" userLabel="Title Text Field">
                     <rect key="frame" x="59" y="112" width="283" height="24"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Enter title" drawsBackground="YES" id="dtY-ID-5O1">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField focusRingType="none" horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j2d-Hb-VmS" userLabel="Init Content Text Field">
-                    <rect key="frame" x="114" y="68" width="228" height="24"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Enter content" drawsBackground="YES" id="lh4-wS-9U3">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -76,9 +59,9 @@ Gw
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKS-M8-Uff">
-                    <rect key="frame" x="143" y="150" width="73" height="19"/>
+                    <rect key="frame" x="143" y="150" width="84" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Add Note" id="W8c-GJ-KpW">
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Add Folder" id="W8c-GJ-KpW">
                         <font key="font" metaFont="systemBold" size="15"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -86,15 +69,10 @@ Gw
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="j2d-Hb-VmS" secondAttribute="trailing" constant="16" id="7RA-3b-OBf"/>
-                <constraint firstItem="WSt-2N-57m" firstAttribute="top" secondItem="85B-i5-zDg" secondAttribute="bottom" constant="28" id="Maz-Nb-C0p"/>
                 <constraint firstItem="85B-i5-zDg" firstAttribute="top" secondItem="1Vy-r2-aUP" secondAttribute="top" constant="66" id="QID-3n-Gdh"/>
                 <constraint firstItem="fKt-5q-5tZ" firstAttribute="top" secondItem="1Vy-r2-aUP" secondAttribute="top" constant="62" id="V1j-I7-0dx"/>
-                <constraint firstItem="WSt-2N-57m" firstAttribute="leading" secondItem="1Vy-r2-aUP" secondAttribute="leading" constant="20" id="cGz-hQ-S47"/>
                 <constraint firstItem="85B-i5-zDg" firstAttribute="leading" secondItem="1Vy-r2-aUP" secondAttribute="leading" constant="20" id="hyp-Br-1Pf"/>
-                <constraint firstItem="j2d-Hb-VmS" firstAttribute="top" secondItem="fKt-5q-5tZ" secondAttribute="bottom" constant="20" id="ras-BL-CXa"/>
                 <constraint firstAttribute="trailing" secondItem="fKt-5q-5tZ" secondAttribute="trailing" constant="16" id="sJN-zz-bIJ"/>
-                <constraint firstItem="j2d-Hb-VmS" firstAttribute="leading" secondItem="WSt-2N-57m" secondAttribute="trailing" constant="8" id="uhi-5E-Cwa"/>
                 <constraint firstItem="fKt-5q-5tZ" firstAttribute="leading" secondItem="85B-i5-zDg" secondAttribute="trailing" constant="8" id="xzC-e7-SjE"/>
             </constraints>
             <point key="canvasLocation" x="-725" y="184"/>

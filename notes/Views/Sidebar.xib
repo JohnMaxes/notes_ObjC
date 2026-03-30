@@ -23,9 +23,9 @@
                     <rect key="frame" x="6" y="178" width="168" height="30"/>
                     <beginningViews>
                         <button verticalHuggingPriority="750" id="Vr2-8f-Q3s">
-                            <rect key="frame" x="-1" y="3" width="27" height="23"/>
+                            <rect key="frame" x="-1" y="3" width="28" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AIP-CT-wCo">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="plus.app.fill" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AIP-CT-wCo">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -35,8 +35,8 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5xX-i9-I8M">
-                            <rect key="frame" x="28" y="3" width="31" height="23"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="folder.fill" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Em5-bF-Iq4">
+                            <rect key="frame" x="29" y="3" width="31" height="23"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="plus.rectangle.on.folder.fill" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Em5-bF-Iq4">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -89,20 +89,31 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="EVe-eS-Ajw">
-                                                        <rect key="frame" x="0.0" y="4" width="143" height="16"/>
+                                                        <rect key="frame" x="26" y="4" width="118" height="16"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Scr-3k-O4D">
                                                             <font key="font" usesAppearanceFont="YES"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zjj-uw-PDw">
+                                                        <rect key="frame" x="4" y="0.0" width="16" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="Yfz-Qv-fsc"/>
+                                                            <constraint firstAttribute="width" constant="16" id="zmA-Y7-uRW"/>
+                                                        </constraints>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="text.document.fill" catalog="system" id="6iE-1g-KKC"/>
+                                                    </imageView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="EVe-eS-Ajw" firstAttribute="leading" secondItem="PTO-bc-0XC" secondAttribute="leading" constant="2" id="E20-dB-N5G"/>
+                                                    <constraint firstItem="EVe-eS-Ajw" firstAttribute="leading" secondItem="Zjj-uw-PDw" secondAttribute="trailing" constant="8" id="1hU-z9-p3z"/>
+                                                    <constraint firstItem="Zjj-uw-PDw" firstAttribute="centerY" secondItem="EVe-eS-Ajw" secondAttribute="centerY" constant="1" id="KSC-ha-qgg"/>
+                                                    <constraint firstItem="Zjj-uw-PDw" firstAttribute="leading" secondItem="PTO-bc-0XC" secondAttribute="leading" constant="4" id="gIc-Wz-083"/>
                                                     <constraint firstItem="EVe-eS-Ajw" firstAttribute="centerY" secondItem="PTO-bc-0XC" secondAttribute="centerY" id="rA2-qQ-ox4"/>
-                                                    <constraint firstItem="EVe-eS-Ajw" firstAttribute="centerX" secondItem="PTO-bc-0XC" secondAttribute="centerX" id="ruD-al-mUg"/>
+                                                    <constraint firstItem="EVe-eS-Ajw" firstAttribute="centerX" secondItem="PTO-bc-0XC" secondAttribute="centerX" constant="13.5" id="ruD-al-mUg"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="imageView" destination="Zjj-uw-PDw" id="D2Y-mg-KFL"/>
                                                     <outlet property="textField" destination="EVe-eS-Ajw" id="Xta-Cc-BMH"/>
                                                 </connections>
                                             </tableCellView>
@@ -135,8 +146,9 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="18" height="16"/>
-        <image name="folder.fill" catalog="system" width="19" height="14"/>
+        <image name="plus.app.fill" catalog="system" width="16" height="14"/>
+        <image name="plus.rectangle.on.folder.fill" catalog="system" width="21" height="16"/>
+        <image name="text.document.fill" catalog="system" width="15" height="16"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
