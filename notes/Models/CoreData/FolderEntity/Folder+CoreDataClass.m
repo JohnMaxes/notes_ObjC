@@ -10,4 +10,14 @@
 
 @implementation Folder
 
+- (NSString *)description {
+    return [NSString stringWithFormat:
+        @"<Folder: title=%@, parent=%@, childFolderCount=%lu, noteCount=%lu>",
+        self.title,
+        self.parentFolder.title ?: @"nil",
+        (unsigned long)self.childFolders.count,
+        (unsigned long)self.notes.count];
+}
+
+
 @end

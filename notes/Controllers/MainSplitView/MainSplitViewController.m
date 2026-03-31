@@ -32,8 +32,12 @@
     [self addSplitViewItem:contentItem];
 }
 
--(void)noteSelected:(NoteNode*)note {
+-(void)noteSelected:(Note*)note {
     [_contentVC displayContentWithNote:note];
+}
+
+-(void)itemDeleted {
+    [_contentVC clearDisplayContent];
 }
 
 @end

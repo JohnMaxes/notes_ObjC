@@ -62,7 +62,7 @@
     return items;
 }
 
-- (void)createFolderWithTitle:(NSString *)title inFolder:(Folder * _Nullable) folder {
+- (Folder *)createFolderWithTitle:(NSString *)title inFolder:(Folder * _Nullable) folder {
     Folder *targetFolder = folder ?: [self getOrCreateRootFolder];
     NSManagedObjectContext *context = targetFolder.managedObjectContext;
 
@@ -75,6 +75,8 @@
     NSError *error = nil;
     [context save:&error];
     [self logErrorIfExist:error];
+    
+    return newFolder;
 }
 
 - (void)deleteFolderEntity:(Folder *)folder {
@@ -82,7 +84,10 @@
     [context deleteObject:folder];
 }
 
-- (void)createNoteWithTitle:(NSString *)title inFolder:(Folder * _Nullable) folder {
+- (Note*)createNoteWithTitle:(NSString *)title
+                    inFolder:(Folder * _Nullable)folder
+                      atPath:(NSString *)path
+{
     Folder *targetFolder = folder ?: [self getOrCreateRootFolder];
     NSManagedObjectContext *context = targetFolder.managedObjectContext;
 
@@ -91,10 +96,12 @@
                      inManagedObjectContext:context];
     newNote.title = title;
     newNote.parentFolder = targetFolder;
+    newNote.contentPath = path;
 
     NSError *error = nil;
     [context save:&error];
     [self logErrorIfExist:error];
+    return newNote;
 }
 
 - (void)deleteNoteEntity:(Note *)note {

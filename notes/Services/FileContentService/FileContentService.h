@@ -8,4 +8,10 @@
 
 @interface FileContentService : NSObject
 
+-(NSString *)createNoteFile;
+-(BOOL)saveNoteContent:(NSAttributedString *)content
+                toPath:(NSString *)filePath;
+-(void)deleteFileAtPath:(NSString*)data;
+-(NSAttributedString *)readNoteFileAtPath:(NSString *)filePath;
+
 @end

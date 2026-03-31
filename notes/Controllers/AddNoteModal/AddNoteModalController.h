@@ -15,7 +15,7 @@
 @end
 
 
-@interface AddNoteModal : NSViewController
+@interface AddNoteModalController : NSViewController
 
 @property (weak) id<AddNoteDelegate> delegate;
 @property IBOutlet NSTextField * titleTextField;

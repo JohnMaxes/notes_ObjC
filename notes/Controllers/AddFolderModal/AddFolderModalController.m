@@ -8,5 +8,22 @@
 
 @implementation AddFolderModalController
 
+- (instancetype)init {
+    self = [super initWithNibName:@"AddFolderModal" bundle:NULL];
+    return self;
+}
+
+-(void)createButtonPressed:(id)sender {
+    NSString * title = _titleTextField.stringValue;
+    
+    if (![title isEqualToString:@""]) {
+        [self.delegate onCreateFolderWithTitle:title];
+        [self dismissViewController:self];
+    }
+}
+
+- (void)cancelButtonPressed:(id)sender {
+    [self dismissViewController:self];
+}
 
 @end

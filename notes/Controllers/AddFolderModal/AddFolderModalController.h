@@ -14,6 +14,10 @@
 
 @interface AddFolderModalController : NSViewController
 
+@property (weak) id<AddFolderDelegate> delegate;
+@property IBOutlet NSTextField * titleTextField;
 
+-(IBAction)createButtonPressed:(id)sender;
+-(IBAction)cancelButtonPressed:(id)sender;
 
 @end

@@ -10,4 +10,9 @@
 
 @implementation Note
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<Note: title=%@, parent=%@>",
+            self.title, self.parentFolder];
+}
+
 @end

@@ -7,7 +7,12 @@
 #import "AddNoteModalController.h"
 #import "Cocoa/Cocoa.h"
 
-@implementation AddNoteModal
+@implementation AddNoteModalController
+
+- (instancetype)init {
+    self = [super initWithNibName:@"AddNoteModal" bundle:NULL];
+    return self;
+}
 
 -(void)createButtonPressed:(id)sender {
     NSString * title = _titleTextField.stringValue;

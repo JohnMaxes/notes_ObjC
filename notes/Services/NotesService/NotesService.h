@@ -10,13 +10,15 @@
 
 @interface NotesService: NSObject
 
-- (NSArray *)getRootItems;
+-(NSArray *)getRootItems;
 
--(void)createNoteWithTitle:(NSString *)title inFolder:(Folder *)folder;
+-(Note*)createNoteWithTitle:(NSString *)title
+                   inFolder:(Folder *)folder
+                     atPath:(NSString *)path;
 -(void)deleteNoteEntity:(Note*)note;
 
 
--(void)createFolderWithTitle:(NSString *)title inFolder:(Folder *)folder;
+-(Folder*)createFolderWithTitle:(NSString *)title inFolder:(Folder *)folder;
 -(void)deleteFolderEntity:(Folder*)folder;
 
 -(void)renameNote:(Note *)note title:(NSString *)title;

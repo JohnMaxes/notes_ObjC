@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="AddNoteModal">
+        <customObject id="-2" userLabel="File's Owner" customClass="AddFolderModalController">
             <connections>
-                <outlet property="titleTextField" destination="fKt-5q-5tZ" id="c9M-CI-5l9"/>
-                <outlet property="view" destination="1Vy-r2-aUP" id="AAX-U2-sJH"/>
+                <outlet property="titleTextField" destination="fKt-5q-5tZ" id="hr4-06-gAC"/>
+                <outlet property="view" destination="1Vy-r2-aUP" id="Xjv-A8-AOQ"/>
             </connections>
         </customObject>
         <view id="1Vy-r2-aUP">
@@ -41,7 +41,7 @@
                     </buttonCell>
                     <color key="bezelColor" name="AccentColor"/>
                     <connections>
-                        <action selector="createButtonPressed:" target="-2" id="fXF-SF-8Cb"/>
+                        <action selector="createButtonPressed:" target="-2" id="wSR-Tt-BHU"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6w-19-f28">
@@ -55,7 +55,7 @@ Gw
 </string>
                     </buttonCell>
                     <connections>
-                        <action selector="cancelButtonPressed:" target="-2" id="29Q-7h-R0W"/>
+                        <action selector="cancelButtonPressed:" target="-2" id="ivA-XE-x05"/>
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKS-M8-Uff">

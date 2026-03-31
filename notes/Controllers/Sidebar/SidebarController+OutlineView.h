@@ -7,4 +7,5 @@
 
 @interface SidebarController (OutlineView)
 
+
 @end

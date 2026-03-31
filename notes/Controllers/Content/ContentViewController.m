@@ -14,6 +14,7 @@
 
 - (instancetype)init {
     self = [super initWithNibName:@"Content" bundle:NULL];
+    _fileContentService = [[FileContentService alloc] init];
     return self;
 }
 
@@ -31,17 +32,23 @@
 
 -(void)displayContentWithNote:(Note *) note {
     self.isUpdatingUI = YES;
+    
     _currNote = note;
-    _textView.string = @"This is a valid note";
+    NSAttributedString *content = [_fileContentService readNoteFileAtPath:note.contentPath];
+    [_textView.textStorage setAttributedString:content];
+    
     self.isUpdatingUI = NO;
 }
 
 -(void)textDidChange:(NSNotification *)notification{
-    NSLog(@"Editing note: %p with new content: %@",
-          _currNote, _textView.string);
     if (self.isUpdatingUI) return;
-    // _currNote.content = _textView.string;
-    // TODO: allow for async file writing with FileContentService
+    NSAttributedString *content = _textView.attributedString;
+    [_fileContentService saveNoteContent:content toPath:_currNote.contentPath];
+}
+
+-(void)clearDisplayContent {
+    _currNote = nil;
+    _textView.string = @"";
 }
 
 @end

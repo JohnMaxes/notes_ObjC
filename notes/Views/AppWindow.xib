@@ -30,16 +30,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="n64-fO-Ecp"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="Ev2-Ay-Kul"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="hO5-If-f5t"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="uwU-w7-Tcu"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="7XN-ZO-rxb"/>
                 </allowedToolbarItems>
-                <defaultToolbarItems>
-                    <toolbarItem reference="n64-fO-Ecp"/>
-                    <toolbarItem reference="Ev2-Ay-Kul"/>
-                    <toolbarItem reference="7XN-ZO-rxb"/>
-                    <toolbarItem reference="hO5-If-f5t"/>
-                </defaultToolbarItems>
+                <defaultToolbarItems/>
             </toolbar>
             <point key="canvasLocation" x="-130" y="109"/>
         </window>

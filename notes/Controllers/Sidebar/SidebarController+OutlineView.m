@@ -10,6 +10,9 @@
 
 @implementation SidebarController (OutlineView)
 
+static NSPasteboardType const NotePasteboardType = @"com.notes.note";
+static NSPasteboardType const FolderPasteboardType = @"com.notes.folder";
+
 - (NSInteger)outlineView:(NSOutlineView *)outlineView
   numberOfChildrenOfItem:(id)item
 {
@@ -37,7 +40,6 @@
     return nil;
 }
 
-// Expandable check
 - (BOOL)outlineView:(NSOutlineView *)outlineView
    isItemExpandable:(id)item
 {
@@ -82,6 +84,58 @@
     cell.imageView.image = icon;
 
     return cell;
+}
+
+- (id<NSPasteboardWriting>)outlineView:(NSOutlineView *)outlineView
+                   pasteboardWriterForItem:(id)item {
+
+    NSPasteboardItem *pbItem = [[NSPasteboardItem alloc] init];
+
+    if ([item isKindOfClass:[Note class]]) {
+        Note *note = (Note *)item;
+        NSString *uri = note.objectID.URIRepresentation.absoluteString;
+        [pbItem setString:uri forType:NotePasteboardType];
+    }
+    else if ([item isKindOfClass:[Folder class]]) {
+        Folder *folder = (Folder *)item;
+        NSString *uri = folder.objectID.URIRepresentation.absoluteString;
+        [pbItem setString:uri forType:FolderPasteboardType];
+    }
+
+    return pbItem;
+}
+
+//NSString *uriString = [pb stringForType:NotePasteboardType];
+//NSURL *url = [NSURL URLWithString:uriString];
+//
+//NSManagedObjectID *objectID =
+//    [self.managedObjectContext.persistentStoreCoordinator
+//        managedObjectIDForURIRepresentation:url];
+//
+//Note *note =
+//    [self.managedObjectContext existingObjectWithID:objectID error:nil];
+
+- (NSDragOperation)outlineView:(NSOutlineView *)outlineView
+                  validateDrop:(id<NSDraggingInfo>)info
+                  proposedItem:(id)item
+            proposedChildIndex:(NSInteger)index
+{
+//    id target = [outlineView itemAtRow:index];
+//        
+//    if([item isMemberOfClass:[Note class]]) {
+//        [target isMemberOfClass:[Note class]]
+//    }
+//    if([item isMemberOfClass:[Folder class]]) {
+//        
+//    }
+    return NSDragOperationMove;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView
+         acceptDrop:(id<NSDraggingInfo>)info
+               item:(id)item
+         childIndex:(NSInteger)index {
+    return YES;
 }
 
 @end

@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="AddNoteModal">
+        <customObject id="-2" userLabel="File's Owner" customClass="AddNoteModalController">
             <connections>
                 <outlet property="initialContentTextField" destination="j2d-Hb-VmS" id="k3O-GH-1Xr"/>
                 <outlet property="titleTextField" destination="fKt-5q-5tZ" id="c9M-CI-5l9"/>
