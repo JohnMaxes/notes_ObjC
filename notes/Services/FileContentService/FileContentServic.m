@@ -34,6 +34,7 @@
 
 - (NSString *)createNoteFile {
     NSString *uuid = [[NSUUID UUID] UUIDString];
+    NSString *contentPath = [uuid stringByAppendingString:@".rtfd"];
     NSString *filePath = [self.basePath stringByAppendingPathComponent:
                           [uuid stringByAppendingString:@".rtfd"]];
 
@@ -62,7 +63,7 @@
         return nil;
     }
 
-    return filePath;
+    return contentPath;
 }
 
 - (NSAttributedString *)readNoteFileAtPath:(NSString *)filePath {
@@ -80,7 +81,6 @@
     NSAttributedString *content = [[NSAttributedString alloc]
                                    initWithRTFDFileWrapper:wrapper
                                    documentAttributes:nil];
-    
     if (!content) {
         NSLog(@"Failed to parse attributed string: %@", error);
         return [[NSAttributedString alloc] initWithString:@""];
@@ -89,20 +89,27 @@
     return content;
 }
 
-- (void)deleteFileAtPath:(NSString *)data {
-    
+- (void)deleteFileAtPath:(NSString *)path {
+    NSError * error = nil;
+    [
+        [NSFileManager defaultManager]
+            removeItemAtPath:
+                [self.basePath stringByAppendingPathComponent:path]
+            error:&error
+    ];
+    if(error) NSLog(@"%@", error);
 }
 
 - (BOOL)saveNoteContent:(NSAttributedString *)content
                  toPath:(NSString *)filePath {
     NSError *error = nil;
 
-    NSFileWrapper *wrapper =
-        [content fileWrapperFromRange:NSMakeRange(0, content.length)
-                   documentAttributes:@{
-                      NSDocumentTypeDocumentAttribute: NSRTFDTextDocumentType
-                   }
-                                error:&error];
+    NSFileWrapper *wrapper = [content
+                              fileWrapperFromRange:NSMakeRange(0, content.length)
+                              documentAttributes:
+                                  @{NSDocumentTypeDocumentAttribute:
+                                        NSRTFDTextDocumentType}
+                              error:&error];
 
     if (!wrapper) {
         NSLog(@"Failed to create wrapper for save: %@", error);

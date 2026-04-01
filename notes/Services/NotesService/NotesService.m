@@ -19,9 +19,12 @@
     if (error) NSLog(@"Fetch folders error: %@", error);
 }
 
+- (void)saveContext {
+    [[self getContext] save:nil];
+}
+
 - (Folder *)getOrCreateRootFolder {
-    AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
-    NSManagedObjectContext *context = delegate.persistentContainer.viewContext;
+    NSManagedObjectContext *context = [self getContext];
 
     NSFetchRequest<Folder *> *request = [Folder fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"isHiddenRoot == YES"];
@@ -35,8 +38,9 @@
     if (root) return root;
 
     // create first-time root
-    root = [NSEntityDescription insertNewObjectForEntityForName:@"Folder"
-                                         inManagedObjectContext:context];
+    root = [NSEntityDescription 
+            insertNewObjectForEntityForName:@"Folder"
+            inManagedObjectContext:context];
     root.title = @"__ROOT__";
     root.isHiddenRoot = YES;
 
@@ -60,6 +64,32 @@
     [items addObjectsFromArray:root.notes.array];
 
     return items;
+}
+
+- (void)assignRootAsParentToItem:(id<FolderContainable>)item {
+    Folder * root = [self getOrCreateRootFolder];
+    if([item isMemberOfClass:[Note class]]) {
+        Note * cast = (Note*) item;
+        cast.parentFolder = root;
+    }
+    if([item isMemberOfClass:[Folder class]]) {
+        Folder * cast = (Folder*) item;
+        cast.parentFolder = root;
+    }
+    [self saveContext];
+}
+
+- (void)moveItem:(id<FolderContainable>)item toParent:(Folder *) targetFolder {
+    item.parentFolder = targetFolder;
+    return [self saveContext];
+}
+
+- (id)getManagedObjectWithManagedObjectIdUri:(NSURL *)uri {
+    NSManagedObjectContext * context = [self getContext];
+    NSManagedObjectID * objectID =
+        [context.persistentStoreCoordinator
+         managedObjectIDForURIRepresentation:uri];
+    return [context objectWithID:objectID];
 }
 
 - (Folder *)createFolderWithTitle:(NSString *)title inFolder:(Folder * _Nullable) folder {
@@ -106,7 +136,10 @@
 
 - (void)deleteNoteEntity:(Note *)note {
     NSManagedObjectContext * context = note.managedObjectContext;
+    NSError * error = nil;
     [context deleteObject:note];
+    [context save:&error];
+    [self logErrorIfExist:error];
 }
 
 - (void)renameNote:(Note *)note title:(NSString *)title {

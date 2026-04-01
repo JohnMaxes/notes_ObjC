@@ -22,14 +22,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadRootItems];
-    _outlineView.dataSource = self;
-    _outlineView.delegate = self;
-    [_outlineView reloadData];
+    [self initOutlineView];
 }
 
 - (void)loadRootItems {
     self.rootItems = [_noteService getRootItems];
+}
+
+- (void)initOutlineView {
+    [self loadRootItems];
+    _outlineView.dataSource = self;
+    _outlineView.delegate = self;
+    
+    [_outlineView registerForDraggedTypes:@[NotePasteboardType, FolderPasteboardType]];
+    [_outlineView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
+    
+    [_outlineView reloadData];
 }
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification {
@@ -98,9 +106,11 @@
                                                  inFolder:targetFolder
                                                    atPath:newPath];
 
-    if (targetFolder.parentFolder == nil) [self loadRootItems];
-    else [self.outlineView expandItem:targetFolder];
+    [self loadRootItems];
     [self.outlineView reloadData];
+
+    if (targetFolder != nil)
+        [self.outlineView expandItem:targetFolder];
 
     NSInteger row = [self.outlineView rowForItem:newNote];
     if (row != -1) {
@@ -114,17 +124,18 @@
     NSInteger selectedRow = self.outlineView.selectedRow;
     Folder *targetFolder = [self identifyTargetFolderOfIndex:selectedRow];
 
-    Folder *newFolder =
-        [self.noteService createFolderWithTitle:title inFolder:targetFolder];
+    Folder *newFolder = [self.noteService createFolderWithTitle:title
+                                                       inFolder:targetFolder];
 
-    if (targetFolder.parentFolder == nil) [self loadRootItems];
-    else [self.outlineView expandItem:targetFolder];
+    [self loadRootItems];
     [self.outlineView reloadData];
+
+    if (targetFolder)
+        [self.outlineView expandItem:targetFolder];
 
     NSInteger row = [self.outlineView rowForItem:newFolder];
     if (row != -1) {
-        [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row]
-                      byExtendingSelection:NO];
+        [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
         [self.outlineView scrollRowToVisible:row];
     }
 }

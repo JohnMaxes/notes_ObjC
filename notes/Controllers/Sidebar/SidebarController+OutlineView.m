@@ -7,11 +7,9 @@
 #import "SidebarController.h"
 #import "SidebarController+OutlineView.h"
 #import <Cocoa/Cocoa.h>
+#import "FolderContainable.h"
 
 @implementation SidebarController (OutlineView)
-
-static NSPasteboardType const NotePasteboardType = @"com.notes.note";
-static NSPasteboardType const FolderPasteboardType = @"com.notes.folder";
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView
   numberOfChildrenOfItem:(id)item
@@ -87,8 +85,8 @@ static NSPasteboardType const FolderPasteboardType = @"com.notes.folder";
 }
 
 - (id<NSPasteboardWriting>)outlineView:(NSOutlineView *)outlineView
-                   pasteboardWriterForItem:(id)item {
-
+               pasteboardWriterForItem:(id)item
+{
     NSPasteboardItem *pbItem = [[NSPasteboardItem alloc] init];
 
     if ([item isKindOfClass:[Note class]]) {
@@ -105,29 +103,10 @@ static NSPasteboardType const FolderPasteboardType = @"com.notes.folder";
     return pbItem;
 }
 
-//NSString *uriString = [pb stringForType:NotePasteboardType];
-//NSURL *url = [NSURL URLWithString:uriString];
-//
-//NSManagedObjectID *objectID =
-//    [self.managedObjectContext.persistentStoreCoordinator
-//        managedObjectIDForURIRepresentation:url];
-//
-//Note *note =
-//    [self.managedObjectContext existingObjectWithID:objectID error:nil];
-
 - (NSDragOperation)outlineView:(NSOutlineView *)outlineView
                   validateDrop:(id<NSDraggingInfo>)info
                   proposedItem:(id)item
-            proposedChildIndex:(NSInteger)index
-{
-//    id target = [outlineView itemAtRow:index];
-//        
-//    if([item isMemberOfClass:[Note class]]) {
-//        [target isMemberOfClass:[Note class]]
-//    }
-//    if([item isMemberOfClass:[Folder class]]) {
-//        
-//    }
+            proposedChildIndex:(NSInteger)index {
     return NSDragOperationMove;
 }
 
@@ -135,6 +114,45 @@ static NSPasteboardType const FolderPasteboardType = @"com.notes.folder";
          acceptDrop:(id<NSDraggingInfo>)info
                item:(id)item
          childIndex:(NSInteger)index {
+    NSPasteboard * pb = [info draggingPasteboard];
+    NSString *uriString = [pb stringForType:NotePasteboardType];
+    BOOL droppedItemIsNote = YES;
+
+    if (!uriString) {
+        uriString = [pb stringForType:FolderPasteboardType];
+        droppedItemIsNote = NO;
+    }
+    if (!uriString) return NO;
+    
+    NSURL * url = [NSURL URLWithString:uriString];
+    NSManagedObject * object = [self.noteService
+                                getManagedObjectWithManagedObjectIdUri:url];
+    
+    id<FolderContainable> droppedItem;
+    if (droppedItemIsNote)
+        droppedItem = (Note *) object;
+    else droppedItem = (Folder *) object;
+        
+    if ([item isKindOfClass:[Folder class]])
+        [self.noteService moveItem:droppedItem toParent:item];
+    else if ([item isKindOfClass:[Note class]])
+        [self.noteService
+         moveItem: droppedItem
+         toParent: ((Note *)item).parentFolder ];
+    else if (item == nil)
+        [self.noteService assignRootAsParentToItem:droppedItem];
+    
+    self.rootItems = [self.noteService getRootItems];
+    [self.outlineView reloadData];
+    
+    if ([item isKindOfClass:[Folder class]])
+        [self.outlineView expandItem:item];
+    NSInteger droppedItemRow = [self.outlineView rowForItem:droppedItem];
+    [self.outlineView selectRowIndexes:[NSIndexSet
+                                        indexSetWithIndex:droppedItemRow]
+                  byExtendingSelection:NO];
+    [self.outlineView scrollRowToVisible:droppedItemRow];
+    
     return YES;
 }
 

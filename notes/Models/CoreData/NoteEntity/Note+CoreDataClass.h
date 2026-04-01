@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "FolderContainable.h"
 
 @class Folder;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Note : NSManagedObject
+@interface Note : NSManagedObject <FolderContainable>
 
 @end
 

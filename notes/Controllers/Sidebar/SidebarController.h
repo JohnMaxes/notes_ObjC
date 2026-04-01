@@ -16,6 +16,9 @@
 -(void)itemDeleted;
 @end
 
+static NSPasteboardType const NotePasteboardType = @"com.notes.note";
+static NSPasteboardType const FolderPasteboardType = @"com.notes.folder";
+
 @interface SidebarController : NSViewController
     <NSOutlineViewDataSource, NSOutlineViewDelegate,
     AddNoteDelegate, AddFolderDelegate >
